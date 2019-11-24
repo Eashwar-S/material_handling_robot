@@ -4,8 +4,8 @@
 In this project, we build a robot with capability that allows it to navigate its environment effectively and efficiently despite obstacles. We have integrated ROS into gazebo and rviz to test the functionality of the robot.
  
 
-## Description
-The module developed for this robot will help robots move to desired location whilst avoiding obstacles and finding the optimal path. The robot uses Simultaneous Localization and Mapping (SLAM) to localize itself in the environment and uses A* algorithm to find the optimal path. For brevity, we are using turtlebot robot which is an open source robot personal kit in ROS. 
+## Project Description
+The robot takes the pickup and dropoff location coordinates as input from the user. Then the robot uses Simultaneous Localization and Mapping (SLAM) to localize itself in the environment. Then with the help of A* algorithm the robot finds the optimal path between the pickup and dropoff location. Finally, the robot starts moving and transport the goods to the desired location. For brevity, we are using turtlebot robot which is an open source robot personal kit in ROS. 
 
 #### Components
 Project is segmented into 3 key components. 
@@ -18,12 +18,12 @@ For full overview of project refer to the UML diagrams in UML folder.
 #### Algorithms used:
 1. Monte Carlo Localization Algorithm - Monte carlo localization is used to make the robot localize itself in the environment using a particle filter. Firstly, this algorithm assumes it is equally likely for the robot to be in any point in the environment. This means that the particles are located randomly throughout the environment. When the robot moves, it shifts the particle to determine the new state of the robot. Whenever, the robot detects an obstacles, it resamples the particles and make the particles converge to the current position of the robot. 
 
-2. A* algorithm – A* algorithm is mainly employed to find the optimal path. It considers many nodes between the starting and target location and estimates the cost taken to move from one node to another. It produces optimal path by always choosing the node which results in minimal cost. Minimal cost is the minimum value of the below mentioned cost function 
-f(n) = g(n) + h(n)
-where f(n) is the cost function
-      n is the next node
-      g(n) is the cummulative cost of the path from node 0 to n
-      h(n) is the heuristic function that estimates the cost of the cheapest path from node n to goal node.
+2. A* algorithm – A* algorithm is mainly employed to find the optimal path. It considers many nodes between the starting and target location and estimates the cost taken to move from one node to another. It obtains optimal path by choosing the node which produces minimum cost when substituted in the cost function. The cost function is given by:   
+  f(n) = g(n) + h(n)  
+where f(n) is the cost function  
+      n is the next node  
+      g(n) is the cummulative cost of the path from node 0 to n  
+      h(n) is the heuristic function that estimates the cost of the cheapest path from node n to goal node.  
 
 
 #### Assumptions
