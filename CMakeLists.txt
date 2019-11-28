@@ -10,11 +10,11 @@ project(material_handling_robot)
 find_package(catkin REQUIRED
              roscpp
              visualization_msgs
-             )
+            )
 
 
 catkin_package()
 
 include_directories(${catkin_INCLUDE_DIRS})
-add_executable(modturtlebot src/marker.cpp src/main.cpp)
-target_link_libraries(modturtlebot ${catkin_LIBRARIES})
+add_executable(vmarkers src/markers.cpp src/main.cpp)
+target_link_libraries(vmarkers ${catkin_LIBRARIES})
