@@ -1,23 +1,23 @@
 #include "markers.h"
 
-void Vmarkers::odomCallback(const nav_msgs::Odometry::ConstPtr& msg) {
+void Location::odomCallback(const nav_msgs::Odometry::ConstPtr& msg) {
   odom_x = msg->pose.pose.position.x;
   odom_y = msg->pose.pose.position.y;
 }
 
 
-Vmarkers::Vmarkers() {
+Location::Location() {
   float odom_x= 0;
   float odom_y= 0;
   uint8_t count= 0;
-  //sub = n.subscribe("/odom", 1000, &Vmarkers::odomCallback);
+  //sub = n.subscribe("/odom", 1000, &Location::odomCallback);
   vmarker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
 
   setDefaultPickAndDropLocations();
   setMarkerProperties();
 }
 
-int Vmarkers::setDefaultPickAndDropLocations() {
+int Location::setDefaultPickAndDropLocations() {
   pickup.push_back(-2.0);
   pickup.push_back(1.0);
   pickup.push_back(0.0);
@@ -29,7 +29,7 @@ int Vmarkers::setDefaultPickAndDropLocations() {
   return 0;
 }
 
-int Vmarkers::setMarkerProperties() {
+int Location::setMarkerProperties() {
     // Set the frame ID and timestamp.  See the TF tutorials for information on these.
 
     //visualization_msgs::Marker marker;
@@ -65,7 +65,7 @@ int Vmarkers::setMarkerProperties() {
 }
 
 
- int Vmarkers::visualizeLocation(int argc, char** argv) {
+ int Location::visualizeLocation(int argc, char** argv) {
   ros::Rate r(20);
 	bool status = false;
 	while (ros::ok()) {
@@ -98,21 +98,21 @@ int Vmarkers::setMarkerProperties() {
     return 0;
 }
 
-int Vmarkers::setPickUpLocation(double x, double y, double z) {
+int Location::setPickUpLocation(double x, double y, double z) {
   pickup[0] = x;
   pickup[1] = y;
   pickup[2] = z;
   return 0;
 }
 
-int Vmarkers::setDropOffLocation(double x, double y, double z) {
+int Location::setDropOffLocation(double x, double y, double z) {
   dropoff[0] = x;
   dropoff[1] = y;
   dropoff[2] = z;
   return 0;
 }
 
-Vmarkers::~Vmarkers() {}
+Location::~Location() {}
 
  
 

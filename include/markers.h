@@ -4,7 +4,7 @@
 #include <geometry_msgs/Twist.h>
 #include <vector>
 
-class Vmarkers {
+class Location {
  private:
     ros::NodeHandle n; 
     ros::Publisher  vmarker_pub;
@@ -23,8 +23,8 @@ class Vmarkers {
     int setDefaultPickAndDropLocations();
 
  public:
-     Vmarkers();
-    ~Vmarkers();
+     Location();
+    ~Location();
      int visualizeLocation(int argc, char** argv);
      int setPickUpLocation(double x, double y, double z);
      int setDropOffLocation(double x, double y, double z);

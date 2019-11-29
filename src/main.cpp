@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
   ros::init(argc,argv,"vmarkers");
   ros::NodeHandle nh;
    
-  Vmarkers vmarker;
+  Location vmarker;
   vmarker.visualizeLocation(argc, argv);
 
   return 0;
