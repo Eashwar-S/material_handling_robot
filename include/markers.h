@@ -2,6 +2,7 @@
 #include <ros/ros.h>
 #include "nav_msgs/Odometry.h"
 #include <geometry_msgs/Twist.h>
+#include <vector>
 
 class Vmarkers {
  private:
@@ -15,10 +16,16 @@ class Vmarkers {
     visualization_msgs::Marker marker;
 
     void odomCallback(const nav_msgs::Odometry::ConstPtr& msg);
+    std::vector<double> pickup;
+    std::vector<double> dropoff;
+
     int setMarkerProperties();
+    int setDefaultPickAndDropLocations();
 
  public:
      Vmarkers();
     ~Vmarkers();
-     int visualizeMarker(int argc, char** argv);
+     int visualizeLocation(int argc, char** argv);
+     int setPickUpLocation(double x, double y, double z);
+     int setDropOffLocation(double x, double y, double z);
 };

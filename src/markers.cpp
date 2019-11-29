@@ -11,10 +11,23 @@ Vmarkers::Vmarkers() {
   float odom_y= 0;
   uint8_t count= 0;
   //sub = n.subscribe("/odom", 1000, &Vmarkers::odomCallback);
-  vmarker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1  );
+  vmarker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
+
+  setDefaultPickAndDropLocations();
   setMarkerProperties();
 }
 
+int Vmarkers::setDefaultPickAndDropLocations() {
+  pickup.push_back(-2.0);
+  pickup.push_back(1.0);
+  pickup.push_back(0.0);
+ 
+  dropoff.push_back(0);
+  dropoff.push_back(0);
+  dropoff.push_back(0);
+
+  return 0;
+}
 
 int Vmarkers::setMarkerProperties() {
     // Set the frame ID and timestamp.  See the TF tutorials for information on these.
@@ -32,9 +45,9 @@ int Vmarkers::setMarkerProperties() {
 
     marker.type = visualization_msgs::Marker::CUBE;
 	  marker.action = visualization_msgs::Marker::ADD;
-    marker.pose.position.x = -2.0;
-    marker.pose.position.y = 1.0;
-    marker.pose.position.z = 0.0;
+    marker.pose.position.x = -2;
+    marker.pose.position.y = 1; 
+    marker.pose.position.z = 0; 
     marker.pose.orientation.w = 1.0;
 
 	  marker.scale.x = 0.3;
@@ -48,10 +61,11 @@ int Vmarkers::setMarkerProperties() {
     marker.color.a = 1.0;
 
     marker.lifetime = ros::Duration();
-   }
+    return 0;
+}
 
 
- int Vmarkers::visualizeMarker(int argc, char** argv) {
+ int Vmarkers::visualizeLocation(int argc, char** argv) {
   ros::Rate r(20);
 	bool status = false;
 	while (ros::ok()) {
@@ -71,9 +85,9 @@ int Vmarkers::setMarkerProperties() {
 	      else
 	      {
 		  marker.action = visualization_msgs::Marker::ADD;
-		  marker.pose.position.x = 0.0;
-		  marker.pose.position.y = 0.0;
-		  marker.pose.position.z = 0.0;
+		  marker.pose.position.x = 0;
+		  marker.pose.position.y = 0;
+		  marker.pose.position.z = 0; 
 		  marker.pose.orientation.w = -1.0;
 		  ros::Duration(5.0).sleep();
 		  vmarker_pub.publish(marker);
@@ -82,6 +96,20 @@ int Vmarkers::setMarkerProperties() {
 	    r.sleep();
     }
     return 0;
+}
+
+int Vmarkers::setPickUpLocation(double x, double y, double z) {
+  pickup[0] = x;
+  pickup[1] = y;
+  pickup[2] = z;
+  return 0;
+}
+
+int Vmarkers::setDropOffLocation(double x, double y, double z) {
+  dropoff[0] = x;
+  dropoff[1] = y;
+  dropoff[2] = z;
+  return 0;
 }
 
 Vmarkers::~Vmarkers() {}
