@@ -1,0 +1,3 @@
+<launch>
+ <node pkg="material_handling_robot" type="vmarkers" name="vmarkers"/>
+</launch>
