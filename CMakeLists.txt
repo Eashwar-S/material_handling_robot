@@ -16,5 +16,5 @@ find_package(catkin REQUIRED
 catkin_package()
 
 include_directories(include ${catkin_INCLUDE_DIRS})
-add_executable(vmarkers src/markers.cpp src/main.cpp)
+add_executable(vmarkers src/location.cpp src/main.cpp)
 target_link_libraries(vmarkers ${catkin_LIBRARIES})

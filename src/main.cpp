@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include <visualization_msgs/Marker.h>
 #include "nav_msgs/Odometry.h"
-#include "markers.h"
+#include "location.h"
 
 int main(int argc, char *argv[]) {
   ros::init(argc,argv,"vmarkers");
