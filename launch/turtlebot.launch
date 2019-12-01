@@ -9,6 +9,5 @@
         pkg="material_handling_robot" 
         type="pickupdropoff"
         output="screen"
-        required = "true"
         launch-prefix = "xterm -e" />
 </launch>
