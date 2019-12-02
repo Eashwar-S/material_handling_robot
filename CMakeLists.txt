@@ -201,3 +201,8 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 add_executable(pickupdropoff src/main.cpp src/pickupdropoff.cpp)
 target_link_libraries(pickupdropoff ${catkin_LIBRARIES})
 
+
+include_directories(include ${catkin_INCLUDE_DIRS})
+add_executable(vmarker src/main2.cpp src/location.cpp)
+target_link_libraries(pickupdropoff ${catkin_LIBRARIES})
+ 
