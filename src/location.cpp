@@ -1,4 +1,4 @@
-#include "location.h"
+#include "location.hpp"
 
 void Location::odomCallback(const nav_msgs::Odometry::ConstPtr& msg) {
   odom_x = msg->pose.pose.position.x;
