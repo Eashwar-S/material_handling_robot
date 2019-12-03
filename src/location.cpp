@@ -70,7 +70,7 @@ int Location::setMarkerProperties() {
 	bool status = false;
 	while (ros::ok()) {
 	    float actual_dis_x, actual_dis_y;
-	    float threshold = 0.2;
+	    float threshold = 0.3;
 	      if (!status)
 	      {
 			vmarker_pub.publish(marker);

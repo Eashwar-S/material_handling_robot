@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
   Location vmarker;
   vmarker.visualizeLocation(argc, argv);
   
-  //ros::spin();
+  ros::spin();
   return 0;
 }
 
