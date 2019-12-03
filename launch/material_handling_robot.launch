@@ -11,5 +11,4 @@
         output="screen"
         launch-prefix = "xterm -e" />
 
-   <node pkg="material_handling_robot" type="vmarkers" name="vmarkers"/>
 </launch>

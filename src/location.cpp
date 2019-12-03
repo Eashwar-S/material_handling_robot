@@ -10,7 +10,7 @@ Location::Location() {
   float odom_x= 0;
   float odom_y= 0;
   uint8_t count= 0;
-  //sub = n.subscribe("/odom", 1000, &Location::odomCallback);
+  sub = n.subscribe("odom", 1000, &Location::odomCallback,this);
   vmarker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
 
   setDefaultPickAndDropLocations();
