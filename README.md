@@ -34,3 +34,8 @@ where f(n) is the cost function
 
 ### Google Spreadsheet AIP
 Click on [link](https://drive.google.com/file/d/1qtUF3zVZq3WPwMe-tqsNadlGDdAg_yqe/view?usp=sharing) to view Spreadsheet
+
+### Sprint Planning Notes
+Click on [link](https://docs.google.com/document/d/1Gug4z3o0OprYMuxE-jDm3AfoFI3M0aBzy0Ka1AaFv9c/edit?usp=sharing) to view Sprint Planning Google Doc file
+
+
