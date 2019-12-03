@@ -2,12 +2,21 @@ cmake_minimum_required(VERSION 2.8.3)
 project(material_handling_robot)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+ #add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED
+  roscpp
+  rospy
+  std_msgs
+  geometry_msgs
+  sensor_msgs
+  nav_msgs
+  move_base_msgs
+  actionlib
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -98,23 +107,11 @@ find_package(catkin REQUIRED)
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES material_handling_robot
-#  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS system_lib
-)
+catkin_package()
 
 ###########
 ## Build ##
 ###########
-
-## Specify additional locations of header files
-## Your package locations should be listed before other locations
-include_directories(
-# include
-# ${catkin_INCLUDE_DIRS}
-)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -200,3 +197,12 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+include_directories(include ${catkin_INCLUDE_DIRS})
+add_executable(pickupdropoff src/main.cpp src/pickupdropoff.cpp)
+target_link_libraries(pickupdropoff ${catkin_LIBRARIES})
+
+
+include_directories(include ${catkin_INCLUDE_DIRS})
+add_executable(vmarker src/main2.cpp src/location.cpp)
+target_link_libraries(vmarker ${catkin_LIBRARIES})
+ 
