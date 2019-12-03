@@ -1,4 +1,4 @@
-#include "location.h"
+#include "location.hpp"
 
 void Location::odomCallback(const nav_msgs::Odometry::ConstPtr& msg) {
   odom_x = msg->pose.pose.position.x;
@@ -10,7 +10,7 @@ Location::Location() {
   float odom_x= 0;
   float odom_y= 0;
   uint8_t count= 0;
-  //sub = n.subscribe("/odom", 1000, &Location::odomCallback);
+  sub = n.subscribe("odom", 1000, &Location::odomCallback,this);
   vmarker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
 
   setDefaultPickAndDropLocations();
@@ -70,7 +70,7 @@ int Location::setMarkerProperties() {
 	bool status = false;
 	while (ros::ok()) {
 	    float actual_dis_x, actual_dis_y;
-	    float threshold = 0.2;
+	    float threshold = 0.3;
 	      if (!status)
 	      {
 			vmarker_pub.publish(marker);
