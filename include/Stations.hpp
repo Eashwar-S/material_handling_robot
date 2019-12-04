@@ -9,4 +9,4 @@ class Stations {
     Stations();
     ~Stations();
     std::vector<Position>&  getStations();
-}
+};
