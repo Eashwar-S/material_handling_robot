@@ -199,7 +199,7 @@ catkin_package()
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 include_directories(include ${catkin_INCLUDE_DIRS})
-add_executable(pickupdropoff src/main.cpp src/pickupdropoff.cpp)
+add_executable(pickupdropoff src/main.cpp src/pickupdropoff.cpp src/Position.cpp src/Stations.cpp)
 target_link_libraries(pickupdropoff ${catkin_LIBRARIES})
 
 
