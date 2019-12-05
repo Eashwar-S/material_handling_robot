@@ -27,6 +27,7 @@ int Location::displayStations() {
      count++;
      stationMarkers.push_back(m);
   }
+  return 0;
 }
 
 
@@ -73,6 +74,7 @@ int Location::publishStationLocations() {
   for (visualization_msgs::Marker mac:stationMarkers) {
     vmarker_pub.publish(mac);
   }
+  return 0;
 }
 
 

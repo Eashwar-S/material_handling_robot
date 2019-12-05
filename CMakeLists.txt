@@ -108,8 +108,13 @@ find_package(catkin REQUIRED
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package()
-
+catkin_package(
+  INCLUDE_DIRS include
+)
+include_directories(
+  include
+  ${catkin_INCLUDE_DIRS} 
+)
 ###########
 ## Build ##
 ###########
@@ -205,5 +210,13 @@ target_link_libraries(pickupdropoff ${catkin_LIBRARIES})
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 add_executable(vmarker src/main2.cpp src/location.cpp src/Position.cpp src/Stations.cpp)
+add_dependencies(vmarker $(catkin_EXPORTED_TARGETS) ${simple_rostest_EXPORTED_TARGETS})
 target_link_libraries(vmarker ${catkin_LIBRARIES})
  
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(vmarkersTest test/vmarkers.test test/vmarkersTest.cpp test/main.cpp src/location.cpp src/Position.cpp src/Stations.cpp)
+  add_dependencies(vmarkersTest vmarker $(catkin_EXPORTED_TARGETS))
+  target_link_libraries(vmarkersTest ${catkin_LIBRARIES})
+  include_directories(include ${catkin_INCLUDE_DIRS})
+endif()
