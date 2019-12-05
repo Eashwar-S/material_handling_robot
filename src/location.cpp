@@ -103,7 +103,8 @@ int Location::visualizeLocations(int argc, char** argv) {
   
   int startLocation =  atoi(argv[1]);
   int endLocation = atoi(argv[2]);
-
+  if(argc == 1)
+    return 0;
   while (ros::ok()) {
       if (!objectHasBeenPicked) {
         if (isNearTarget(stationMarkers[startLocation])) {
