@@ -10,10 +10,12 @@ typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseCl
 class Pickupdropoff {
  private:
    Stations s;
+   int startLocation;
+   int endLocation;
 
  public:
   bool goToPickUpLocation(move_base_msgs::MoveBaseGoal &goal);
   bool goToDropOffLocation(move_base_msgs::MoveBaseGoal &goal);
   ~Pickupdropoff();
-   Pickupdropoff();
+   Pickupdropoff(int startL,int endL);
 };

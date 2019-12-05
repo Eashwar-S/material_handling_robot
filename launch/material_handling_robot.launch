@@ -1,18 +1,24 @@
 <launch>
+  <arg name="pickupLocation"  default = "0" />
+  <arg name="dropoffLocation" default = "1"/>
+
+  <node name="vmarker" 
+        pkg="material_handling_robot" 
+        type="vmarker" 
+        args="$(arg pickupLocation) $(arg dropoffLocation)"/>
+
   <arg name="world_file"
        default="$(find material_handling_robot)/world/robotworld.world"/>
-  <include file= "$(find turtlebot_gazebo)/launch/turtlebot_world.launch"> 
-      <arg name="world_file" 
-           value="$(arg world_file)"/>
-  </include>
-  <node name="pickupdropoff" 
-        pkg="material_handling_robot" 
-        type="pickupdropoff"/>
-   
-   <!--
-  <node name="vmarker" pkg="material_handling_robot" type="vmarker"/>
-  -->
 
+
+  <include file= "$(find turtlebot_gazebo)/launch/turtlebot_world.launch"> 
+      <arg name="world_file" value="$(arg world_file)"/>
+  </include>
+
+   <node name="pickupdropoff" 
+        pkg="material_handling_robot" 
+        type="pickupdropoff"
+        args="$(arg pickupLocation) $(arg dropoffLocation)"/>
   
     <include file="$(find turtlebot_gazebo)/launch/amcl_demo.launch"> 
        <arg name="map_file" value="$(find material_handling_robot)/maps/my_map.yaml"/>

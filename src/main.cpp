@@ -19,8 +19,9 @@ int main(int argc, char** argv) {
   while (!ac.waitForServer(ros::Duration(5.0))) {
     ROS_INFO("Waiting for the move_base action server to come up");
   }
-
-  Pickupdropoff pickdrop;
+  int l1 = atoi(argv[1]);
+  int l2 = atoi(argv[2]);
+  Pickupdropoff pickdrop(l1,l2);
   move_base_msgs::MoveBaseGoal goal;
   pickdrop.goToPickUpLocation(goal);
  
