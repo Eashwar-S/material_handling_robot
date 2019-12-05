@@ -9,7 +9,7 @@ typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseCl
 int main(int argc, char** argv) {
   // Initialize the simple_navigation_goals node
   // I am changing the node name to pick_objects
-  ros::init(argc, argv, "pick_objects");
+  ros::init(argc, argv, "pickupdropoff");
 
   //tell the action client that we want to spin a thread by default
   MoveBaseClient ac("move_base", true);
@@ -19,10 +19,13 @@ int main(int argc, char** argv) {
   while (!ac.waitForServer(ros::Duration(5.0))) {
     ROS_INFO("Waiting for the move_base action server to come up");
   }
+  
   int l1 = atoi(argv[1]);
   int l2 = atoi(argv[2]);
   Pickupdropoff pickdrop(l1,l2);
   move_base_msgs::MoveBaseGoal goal;
+  goal.target_pose.header.frame_id = "map";
+  goal.target_pose.header.stamp = ros::Time::now();
   pickdrop.goToPickUpLocation(goal);
  
 
