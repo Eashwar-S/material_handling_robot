@@ -96,7 +96,7 @@ bool Location::isNearTarget(const visualization_msgs::Marker &target) {
 
 
 int Location::visualizeLocations(int argc, char** argv) {
-  ros::Rate r(20);
+  ros::Rate r(30);
   bool objectHasBeenPicked = false;
   while (ros::ok()) {
       if (!objectHasBeenPicked) {
@@ -104,17 +104,11 @@ int Location::visualizeLocations(int argc, char** argv) {
            displayTargetLocation(stationMarkers[1]);
            objectHasBeenPicked = true;
           }
-          //if (true)
-           //displayTargetLocation(stationMarkers[1]);
-       }
-
-      else {
-        if(isNearTarget(stationMarkers[2]))
-          displayTargetLocation(stationMarkers[2]);
-
-        ros::Duration(5.0).sleep();
+      } else {
+          if (isNearTarget(stationMarkers[2]))
+             displayTargetLocation(stationMarkers[2]);
       }
-
+      ROS_INFO("I am here");
       publishStationLocations();
       ros::spinOnce();
       r.sleep();
