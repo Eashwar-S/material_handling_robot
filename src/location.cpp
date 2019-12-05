@@ -76,7 +76,6 @@ int Location::publishStationLocations() {
 }
 
 
-
 int Location::displayTargetLocation(visualization_msgs::Marker  &target) {
    target.type = visualization_msgs::Marker::SPHERE;
    target.action = visualization_msgs::Marker::ADD;
@@ -101,13 +100,13 @@ int Location::visualizeLocations(int argc, char** argv) {
   bool objectHasBeenPicked = false;
   while (ros::ok()) {
       if (!objectHasBeenPicked) {
-        //if (isNearTarget(stationMarkers[1])) {
-           //displayTargetLocation(stationMarkers[1]);
-           //objectHasBeenPicked = true;
-          //}
-          if(true)
+        if (isNearTarget(stationMarkers[1])) {
            displayTargetLocation(stationMarkers[1]);
-      }
+           objectHasBeenPicked = true;
+          }
+          //if (true)
+           //displayTargetLocation(stationMarkers[1]);
+       }
 
       else {
         if(isNearTarget(stationMarkers[2]))

@@ -9,7 +9,9 @@
         pkg="material_handling_robot" 
         type="pickupdropoff"/>
    
+   <!--
   <node name="vmarker" pkg="material_handling_robot" type="vmarker"/>
+  -->
 
   
     <include file="$(find turtlebot_gazebo)/launch/amcl_demo.launch"> 
