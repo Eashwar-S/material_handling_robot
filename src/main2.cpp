@@ -8,9 +8,8 @@ int main(int argc, char *argv[]) {
   ros::NodeHandle nh;
    
   Location vmarker;
-  vmarker.visualizeLocation(argc, argv);
+  vmarker.visualizeLocations(argc, argv);
   
-  ros::spin();
   return 0;
 }
 

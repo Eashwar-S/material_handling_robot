@@ -1,11 +1,11 @@
 #include "Stations.hpp"
 
 Stations::Stations() {
-  Position p1(1, 2);
-  Position p2(2, 3);
-  Position p3(4, 6);
-  Position p4(5, 8);
-  Position p5(9, 10);
+  Position p1(-2, 3);
+  Position p2(0, 3);
+  Position p3(1, 2);
+  Position p4(2, 1);
+  Position p5(2, 3);
 
   stations.push_back(p1);
   stations.push_back(p2);

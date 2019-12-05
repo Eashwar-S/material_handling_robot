@@ -2,30 +2,30 @@
 #include <ros/ros.h>
 #include "nav_msgs/Odometry.h"
 #include <geometry_msgs/Twist.h>
+#include "Stations.hpp"
 #include <vector>
+#include <bitset>
 
 class Location {
  private:
     ros::NodeHandle n; 
     ros::Publisher  vmarker_pub;
     ros::Subscriber sub;
-
     float odom_x, odom_y;
-    uint8_t count;
 
-    visualization_msgs::Marker marker;
+    Stations stations;
+    std::vector<visualization_msgs::Marker> stationMarkers; 
 
     void odomCallback(const nav_msgs::Odometry::ConstPtr& msg);
-    std::vector<double> pickup;
-    std::vector<double> dropoff;
-
-    int setMarkerProperties();
-    int setDefaultPickAndDropLocations();
+    int setMarkerProperties(int color,int id,Position p,visualization_msgs::Marker& m);
+     
 
  public:
      Location();
     ~Location();
-     int visualizeLocation(int argc, char** argv);
-     int setPickUpLocation(double x, double y, double z);
-     int setDropOffLocation(double x, double y, double z);
+     int visualizeLocations(int argc, char** argv);
+     int displayStations();
+     int publishStationLocations();
+     bool isNearTarget(const visualization_msgs::Marker &target);
+     int displayTargetLocation(visualization_msgs::Marker &dropOff);
 };
