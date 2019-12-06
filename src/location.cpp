@@ -12,7 +12,7 @@ Location::Location() {
   odom_y= 0;
   //uint8_t count= 0;
   sub = n.subscribe("odom", 1000, &Location::odomCallback,this);
-  vmarker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 30);
+  vmarker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 10);
   
   displayStations();
 }
@@ -87,7 +87,7 @@ int Location::displayTargetLocation(visualization_msgs::Marker  &target) {
 
 bool Location::isNearTarget(const visualization_msgs::Marker &target) {
     float actual_dis_x, actual_dis_y;
-    float threshold = 0.3;
+    float threshold = 0.8;
 
     actual_dis_x = fabs(target.pose.position.x - odom_x);
     actual_dis_y = fabs(target.pose.position.y - odom_y);
@@ -98,7 +98,7 @@ bool Location::isNearTarget(const visualization_msgs::Marker &target) {
 
 
 int Location::visualizeLocations(int argc, char** argv) {
-  ros::Rate r(40);
+  ros::Rate r(30);
   bool objectHasBeenPicked = false;
   
   int startLocation =  atoi(argv[1]);
