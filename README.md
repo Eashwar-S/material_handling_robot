@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mesneym/material_handling_robot.svg?branch=Iteration1)](https://travis-ci.org/mesneym/material_handling_robot)
+[![Build Status](https://travis-ci.org/mesneym/material_handling_robot.svg?branch=test)](https://travis-ci.org/mesneym/material_handling_robot)
 [![Coverage Status](https://coveralls.io/repos/github/mesneym/material_handling_robot/badge.svg?branch=test)](https://coveralls.io/github/mesneym/material_handling_robot?branch=test)
 # Material_Handling_Robot
 

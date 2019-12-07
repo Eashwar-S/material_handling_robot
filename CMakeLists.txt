@@ -224,6 +224,7 @@ endif()
 
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 --coverage")
   add_rostest_gtest(pickupdropoffTest test/pickupdropoff.test test/pickupdropoffTest.cpp src/Stations.cpp src/Position.cpp src/pickupdropoff.cpp)
   add_dependencies(pickupdropoffTest pickupdropoff $(catkin_EXPORTED_TARGETS))
   target_link_libraries(pickupdropoffTest ${catkin_LIBRARIES})
