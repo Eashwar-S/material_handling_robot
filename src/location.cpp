@@ -12,7 +12,7 @@ Location::Location() {
   odom_y= 0;
   //uint8_t count= 0;
   sub = n.subscribe("odom", 1000, &Location::odomCallback,this);
-  vmarker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
+  vmarker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 10);
   
   displayStations();
 }
@@ -27,6 +27,7 @@ int Location::displayStations() {
      count++;
      stationMarkers.push_back(m);
   }
+  return 0;
 }
 
 
@@ -73,6 +74,7 @@ int Location::publishStationLocations() {
   for (visualization_msgs::Marker mac:stationMarkers) {
     vmarker_pub.publish(mac);
   }
+  return 0;
 }
 
 
@@ -85,7 +87,7 @@ int Location::displayTargetLocation(visualization_msgs::Marker  &target) {
 
 bool Location::isNearTarget(const visualization_msgs::Marker &target) {
     float actual_dis_x, actual_dis_y;
-    float threshold = 0.3;
+    float threshold = 0.8;
 
     actual_dis_x = fabs(target.pose.position.x - odom_x);
     actual_dis_y = fabs(target.pose.position.y - odom_y);
@@ -101,7 +103,8 @@ int Location::visualizeLocations(int argc, char** argv) {
   
   int startLocation =  atoi(argv[1]);
   int endLocation = atoi(argv[2]);
-
+  if(argc == 1)
+    return 0;
   while (ros::ok()) {
       if (!objectHasBeenPicked) {
         if (isNearTarget(stationMarkers[startLocation])) {

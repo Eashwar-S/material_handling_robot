@@ -1,0 +1,10 @@
+<launch>
+  <node name="pickupdropoff" 
+        pkg="material_handling_robot" 
+        type="pickupdropoff" />
+
+  <test pkg="material_handling_robot" 
+        type="pickupdropoffTest"
+        test-name="pickupdropoffTest" />
+        
+</launch>
