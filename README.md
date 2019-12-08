@@ -31,11 +31,85 @@ where f(n) is the cost function
 #### Assumptions
 1. The environment is static not dynamic
 2. Creating markers and assuming them as goods as turtlebot cannot lift the material.
+3. The user must have Ubuntu 16.04 LTS version installed.
+4. The user must have ROS kinetic and catkin installed.
 
+## Executables Added:
+In CMakeLists.txt the following executables are added to execute cpp files in src folder:
+```
+add_executable(pickupdropoff src/main.cpp src/pickupdropoff.cpp src/Position.cpp src/Stations.cpp)
+add_executable(vmarker src/main2.cpp src/location.cpp src/Position.cpp src/Stations.cpp)
+```
+
+## Target Link Libraries Added:
+In CMakeLists.txt the following target link libraries to link executables:
+```
+target_link_libraries(pickupdropoff ${catkin_LIBRARIES})
+target_link_libraries(vmarker ${catkin_LIBRARIES})
+```
+## To integrate google test the following libraries and dependencies were added to CMakeLists.txt:
+```
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(vmarkersTest test/vmarkers.test test/vmarkersTest.cpp test/main.cpp src/location.cpp src/Position.cpp src/Stations.cpp)
+  target_link_libraries(vmarkersTest ${catkin_LIBRARIES})
+  include_directories(include ${catkin_INCLUDE_DIRS})
+endif()
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 --coverage")
+  add_rostest_gtest(pickupdropoffTest test/pickupdropoff.test test/pickupdropoffTest.cpp src/Stations.cpp src/Position.cpp src/pickupdropoff.cpp)
+  target_link_libraries(pickupdropoffTest ${catkin_LIBRARIES})
+  include_directories(include ${catkin_INCLUDE_DIRS})
+endif()
+```
+## Added C++11 Compile option:
+This is done to take advantage of C++11 features
+```
+add_compile_options(-std=c++11)
+```
 ### Google Spreadsheet AIP
 Click on [link](https://drive.google.com/file/d/1qtUF3zVZq3WPwMe-tqsNadlGDdAg_yqe/view?usp=sharing) to view Spreadsheet
 
 ### Sprint Planning Notes
 Click on [link](https://docs.google.com/document/d/1Gug4z3o0OprYMuxE-jDm3AfoFI3M0aBzy0Ka1AaFv9c/edit?usp=sharing) to view Sprint Planning Google Doc file
 
+## How to build
+```
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/
+cd src/
+git clone https://github.com/mesneym/material_handling_robot.git
+cd ..
+catkin_make
+source devel/setup.bash
+```
+## How to run tests
+```
+cd catkin_ws
+source devel/setup.bash
+catkin_make run_tests
+```
+## To run tests using launch files
+```
+cd catkin_ws
+source devel/setup.bash
+rostest material_handling_robot pickupdropoff.test 
 
+cd catkin_ws
+source devel/setup.bash
+rostest material_handling_robot vmarkers.test 
+```
+## How to run using launch files
+```
+cd catkin_ws
+source devel/setup.bash
+roslaunch material_handling_robot material_handling_robot.launch pickupLocation:=<number> dropoffLocation:=<number>
+
+```
+number argument ranges between 0 and 4.
+
+## Personal Information:
+
+We (Eashwar Sathyamurthy and Akwasi A Obeng) both are pursuing Masters in Engineering specializing in Robotics in University of Maryland. We both are first year graduate students. We mainly chose to do this project as it resonated with our interests.
