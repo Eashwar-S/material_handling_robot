@@ -23,7 +23,7 @@
  ******************************************************************************/
 
 /**
- * @file location.cpp
+ * @file Location.cpp
  *
  * @author Akwasi A Obeng(Driver)  Eashwar Sathyamurthy(Navigator)
  *
@@ -38,7 +38,7 @@
  * Location class from Location.hpp header file
  *
  */
-#include "location.hpp"
+#include "Location.hpp"
 
 void Location::odomCallback(const nav_msgs::Odometry::ConstPtr& msg) {
   odom_x = msg->pose.pose.position.x;

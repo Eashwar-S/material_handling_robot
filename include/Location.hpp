@@ -23,7 +23,7 @@
  ******************************************************************************/
 
 /**
- * @file location.hpp
+ * @file Location.hpp
  *
  * @author Akwasi A Obeng(Driver)  Eashwar Sathyamurthy(Navigator)
  *
@@ -44,6 +44,9 @@
 #include <bitset>
 #include "nav_msgs/Odometry.h"
 #include "Stations.hpp"
+
+#ifndef SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_LOCATION_HPP_
+#define SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_LOCATION_HPP_
 /**
  *
  * @brief declaration of Location class
@@ -158,5 +161,6 @@ class Location {
    */
   int setMarkerProperties(int color, int id, Position p,
                           visualization_msgs::Marker &m);
-};
+};  
+#endif  // SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_LOCATION_HPP_
 
