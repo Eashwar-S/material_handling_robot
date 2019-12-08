@@ -69,7 +69,6 @@ int Location::displayStations() {
 
 int Location::setMarkerProperties(int color, int id, Position p,
                                   visualization_msgs::Marker& m) {
-
   // Setting the frame ID and timestamp.
 
   m.header.frame_id = "/map";

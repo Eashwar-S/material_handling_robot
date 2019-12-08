@@ -1,0 +1,28 @@
+Command:
+
+cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
+
+Result:
+Done processing ./src/material_handling_robot/include/Stations.hpp
+./src/material_handling_robot/include/Pickupdropoff.hpp:74:  Is this a non-const reference? If so, make const or use a pointer: move_base_msgs::MoveBaseGoal &goal  [runtime/references] [2]
+./src/material_handling_robot/include/Pickupdropoff.hpp:88:  Is this a non-const reference? If so, make const or use a pointer: MoveBaseClient &ac  [runtime/references] [2]
+./src/material_handling_robot/include/Pickupdropoff.hpp:110:  Is this a non-const reference? If so, make const or use a pointer: move_base_msgs::MoveBaseGoal &goal  [runtime/references] [2]
+./src/material_handling_robot/include/Pickupdropoff.hpp:110:  Is this a non-const reference? If so, make const or use a pointer: MoveBaseClient &ac  [runtime/references] [2]
+Done processing ./src/material_handling_robot/include/Pickupdropoff.hpp
+./src/material_handling_robot/include/Location.hpp:147:  Is this a non-const reference? If so, make const or use a pointer: visualization_msgs::Marker &dropOff  [runtime/references] [2]
+./src/material_handling_robot/include/Location.hpp:163:  Is this a non-const reference? If so, make const or use a pointer: visualization_msgs::Marker &m  [runtime/references] [2]
+Done processing ./src/material_handling_robot/include/Location.hpp
+Done processing ./src/material_handling_robot/include/Position.hpp
+Done processing ./src/material_handling_robot/test/pickupdropoffTest.cpp
+Done processing ./src/material_handling_robot/test/vmarkersTest.cpp
+Done processing ./src/material_handling_robot/test/main.cpp
+Done processing ./src/material_handling_robot/src/Position.cpp
+Done processing ./src/material_handling_robot/src/main2.cpp
+Done processing ./src/material_handling_robot/src/Pickupdropoff.cpp
+Done processing ./src/material_handling_robot/src/main.cpp
+Done processing ./src/material_handling_robot/src/Stations.cpp
+Done processing ./src/material_handling_robot/src/Location.cpp
+Total errors found: 6
+
+Ignored second level errors.
+

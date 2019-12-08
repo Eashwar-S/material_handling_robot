@@ -44,8 +44,8 @@
 #include <memory>
 #include "Stations.hpp"
 
-#ifndef SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_PICKUPDROPOFF_HPP_
-#define SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_PICKUPDROPOFF_HPP_
+#ifndef INCLUDE_PICKUPDROPOFF_HPP_
+#define INCLUDE_PICKUPDROPOFF_HPP_
 
 typedef actionlib::SimpleActionClient
 <move_base_msgs::MoveBaseAction> MoveBaseClient;
@@ -131,5 +131,5 @@ class Pickupdropoff {
   Pickupdropoff();
 };
 
-#endif  // SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_PICKUPDROPOFF_HPP_
+#endif  // INCLUDE_PICKUPDROPOFF_HPP_
 

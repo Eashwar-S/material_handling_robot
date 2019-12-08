@@ -88,8 +88,9 @@ bool Pickupdropoff::goToPickAndDrop(move_base_msgs::MoveBaseGoal &goal,
       if (goToLocation(ac, goal, true)) {
         ROS_INFO_STREAM("1nd Goal is successfully reached");
         ros::Duration(4.0).sleep();
-      } else
+      } else {
         ROS_INFO_STREAM("The robot could not reach the second goal");
+      }
     } else {
       ROS_INFO_STREAM("The robot could not reach the first goal");
       return false;

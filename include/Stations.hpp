@@ -41,8 +41,8 @@
 #include <vector>
 #include "Position.hpp"
 
-#ifndef SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_STATIONS_HPP_
-#define SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_STATIONS_HPP_
+#ifndef INCLUDE_STATIONS_HPP_
+#define INCLUDE_STATIONS_HPP_
 /**
  *
  * @brief declaration of Stations class
@@ -83,5 +83,5 @@ class Stations {
    */
   std::vector<Position>& getStations();
 };
-#endif  // SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_STATIONS_HPP_
+#endif  // INCLUDE_STATIONS_HPP_
 

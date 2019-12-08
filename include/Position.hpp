@@ -42,8 +42,8 @@
  * @brief declaration of Position class
  *
  */
-#ifndef SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_POSITION_HPP_
-#define SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_POSITION_HPP_
+#ifndef INCLUDE_POSITION_HPP_
+#define INCLUDE_POSITION_HPP_
 
 class Position {
  private:
@@ -91,4 +91,4 @@ class Position {
    */
   float getX();
 };
-#endif  // SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_POSITION_HPP_
+#endif  // INCLUDE_POSITION_HPP_

@@ -108,7 +108,6 @@ TEST(vmarkersTest, testingsetMarkerPropertiesMethod) {
   std::vector<Position> stations;
   stations.push_back(p1);
   visualization_msgs::Marker m;
-  std::vector<Position> vec = station.getStations();
   Position pos(1, 2);
   EXPECT_EQ(0, locate.setMarkerProperties(2, 1, stations[0], m));
 }

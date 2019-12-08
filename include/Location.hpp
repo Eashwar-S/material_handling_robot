@@ -45,8 +45,8 @@
 #include "nav_msgs/Odometry.h"
 #include "Stations.hpp"
 
-#ifndef SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_LOCATION_HPP_
-#define SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_LOCATION_HPP_
+#ifndef INCLUDE_LOCATION_HPP_
+#define INCLUDE_LOCATION_HPP_
 /**
  *
  * @brief declaration of Location class
@@ -161,6 +161,6 @@ class Location {
    */
   int setMarkerProperties(int color, int id, Position p,
                           visualization_msgs::Marker &m);
-};  
-#endif  // SRC_MATERIAL_HANDLING_ROBOT_INCLUDE_LOCATION_HPP_
+};
+#endif  // INCLUDE_LOCATION_HPP_
 
