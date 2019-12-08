@@ -42,7 +42,7 @@
 #include <ros/ros.h>
 #include <iostream>
 #include <memory>
-#include "location.hpp"
+#include "Location.hpp"
 /**
  *@brief Unit Test for testing displayStations method in Location class
  *

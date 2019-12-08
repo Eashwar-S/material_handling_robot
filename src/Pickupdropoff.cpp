@@ -62,33 +62,42 @@ bool Pickupdropoff::updateLocation(move_base_msgs::MoveBaseGoal &goal,
 }
 
 bool Pickupdropoff::goToLocation(MoveBaseClient &ac,
-                                 const move_base_msgs::MoveBaseGoal &goal) {
+      const move_base_msgs::MoveBaseGoal &goal, bool test) {
   ROS_INFO_STREAM("Sending goal");
   /// Sending the goal to move_base
   ac.sendGoal(goal);
   /// Waiting for infinite to get results
-  ac.waitForResult();
+  if (test)
+    ac.waitForResult();
   /// returning the state the move_base based on results
   return ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED;
 }
 
 bool Pickupdropoff::goToPickAndDrop(move_base_msgs::MoveBaseGoal &goal,
                                     MoveBaseClient &ac, int startLocation,
-                                    int endLocation) {
+                                    int endLocation, bool test) {
   updateLocation(goal, startLocation);
   /// Checking if the robot reached its 0th goal
-  if (goToLocation(ac, goal)) {
-    ROS_INFO_STREAM("0th Goal is successfully reached");
-    /// waiting 4 sec to receive next goal
-    ros::Duration(4.0).sleep();
-    updateLocation(goal, endLocation);
-    /// Checking if the turtlebot reached its 1nd goal
-    if (goToLocation(ac, goal)) {
-      ROS_INFO_STREAM("1nd Goal is successfully reached");
+  if (test) {
+    if (goToLocation(ac, goal, true)) {
+      ROS_INFO_STREAM("0th Goal is successfully reached");
+      /// waiting 4 sec to receive next goal
       ros::Duration(4.0).sleep();
-    } else
-      ROS_INFO_STREAM("The robot could not reach the second goal");
-  } else
-    ROS_INFO_STREAM("The robot could not reach the first goal");
+      updateLocation(goal, endLocation);
+      /// Checking if the turtlebot reached its 1nd goal
+      if (goToLocation(ac, goal, true)) {
+        ROS_INFO_STREAM("1nd Goal is successfully reached");
+        ros::Duration(4.0).sleep();
+      } else
+        ROS_INFO_STREAM("The robot could not reach the second goal");
+    } else {
+      ROS_INFO_STREAM("The robot could not reach the first goal");
+      return false;
+    }
+  } else {
+    if (!goToLocation(ac, goal, false))
+      return false;
+  }
+  return true;
 }
 

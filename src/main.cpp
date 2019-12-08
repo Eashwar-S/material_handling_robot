@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
   
   Pickupdropoff pickdrop;
   move_base_msgs::MoveBaseGoal goal;
-  pickdrop.goToPickAndDrop(goal,ac,atoi(argv[1]),atoi(argv[2]));
+  pickdrop.goToPickAndDrop(goal, ac, atoi(argv[1]), atoi(argv[2]), true);
 }
 
 

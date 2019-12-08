@@ -79,12 +79,14 @@ class Pickupdropoff {
    * 
    * @param goal a message of MoveBase Goal containing the position
    * and orientation paramenters of the target
+   * 
+   * @param test a boolean used for testing purpose
    *
    * @return bool true or false to indicate success
    *
    */
   bool goToLocation(MoveBaseClient &ac,
-                    const move_base_msgs::MoveBaseGoal &goal);
+                    const move_base_msgs::MoveBaseGoal &goal, bool test);
   /**
    * @brief Method used to move the turtlebot from first station to 
    * target station.
@@ -99,12 +101,14 @@ class Pickupdropoff {
    * 
    *  @param endLocation an integer ranging between 0 and 4 used to select the 
    * ending station to which material has to be dropped off.
+   * 
+   * @param test a boolean used for testing purpose
    *
    * @return bool true or false to indicate success
    *
    */
   bool goToPickAndDrop(move_base_msgs::MoveBaseGoal &goal, MoveBaseClient &ac,
-                       int startLocation, int endLocation);
+                       int startLocation, int endLocation, bool test);
   /**
    *
    * @brief destructor to destroy the Pickupdropoff class object
