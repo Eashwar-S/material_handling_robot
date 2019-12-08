@@ -5,17 +5,25 @@
 #include "Stations.hpp"
 
 
+#ifndef INCLUDE_PICKUPDROPOFF_HPP_
+#define INCLUDE_PICKUPDROPOFF_HPP_
+
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
+
 
 class Pickupdropoff {
  private:
    Stations s;
-   int startLocation;
-   int endLocation;
+   //MoveBaseClient ac("move_base", true);
 
  public:
-  bool goToPickUpLocation(move_base_msgs::MoveBaseGoal &goal);
-  bool goToDropOffLocation(move_base_msgs::MoveBaseGoal &goal);
+  bool updateLocation(move_base_msgs::MoveBaseGoal &goal,int target);
+  bool goToLocation(MoveBaseClient &ac,const move_base_msgs::MoveBaseGoal &goal);
+  bool goToPickDrop();
+  bool goToPickAndDrop(move_base_msgs::MoveBaseGoal &goal,MoveBaseClient &ac, int startLocation, int endLocation);
+
   ~Pickupdropoff();
-   Pickupdropoff(int startL,int endL);
+   Pickupdropoff();
 };
+
+#endif  //INCLUDE_PICKUPDROPOFF_HPP_

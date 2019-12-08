@@ -4,16 +4,23 @@
 #include <iostream>
 #include <memory>
 
-TEST(pickupdropoffTest, testinggoToPickUpLocationMethod) {
-  Pickupdropoff pick(1 , 2);
-  move_base_msgs::MoveBaseGoal goal;
-  EXPECT_EQ(true , pick.goToPickUpLocation(goal));
-}
+//TEST(pickupdropoffTest, testinggoToLocationMethod) {
+  //Pickupdropoff pick;
+  //move_base_msgs::MoveBaseGoal goal;
+  //MoveBaseClient ac("move_base", true); 
 
-TEST(pickupdropoffTest, testinggoToDropOffLocationMethod) {
-  Pickupdropoff pick(1 , 2);
+  //while (!ac.waitForServer(ros::Duration(5.0))) {
+    //ROS_INFO("Waiting for the move_base action server to come up");
+  //}
+
+  //EXPECT_EQ(true , pick.goToLocation(ac, goal));
+//}
+
+
+TEST(pickupdropoffTest, testingupdateLocationMethod) {
+  Pickupdropoff pick;
   move_base_msgs::MoveBaseGoal goal;
-  EXPECT_EQ(true , pick.goToDropOffLocation(goal));
+  EXPECT_EQ(true , pick.updateLocation(goal,1));
 }
 
 int main(int argc, char **argv) {
