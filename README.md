@@ -3,14 +3,14 @@
 # Material_Handling_Robot
 
 ## Overview
-In recent times, significant developments have been made in robots that transport goods from one location to another. Most of them have functionality of moving from one place to another. However, it is of essence that these robots be able to navigate their  environment effectively and efficiently whilst avoiding obstacles.  
+In recent times, significant developments have been made in robots that transport goods from one location to another. Most of them have functionality of moving between locations in some structed environment. However, it is of essence that these robots be able to navigate their  environment effectively and efficiently whilst avoiding obstacles.  
 
 Developed in this project is a robot with the capability of moving from one station(pickup) to another(dropoff) by following some optimal path whilst avoiding obstacles.
 
 
 ## Project Description
-Two randomized stations are selected from a fixed number of colored stations to be used as the pickup and dropoff stations. The desired stations to be used are specified by the user and then the turtlebot(robot) moves from pickup location to dropoff location by using Simultaneous Localization and Mapping (SLAM) to localize itself in the environment
-and Djikstra algorithm to find the optimal path between the pickup and dropoff location whilst avoiding obstacles. To simplify the task, the turtlebot package is utilized.   
+Two randomized stations are selected from a fixed number of colored stations to be used as the pickup and dropoff stations. The desired stations to be used are specified by the user. The turtlebot(robot) then moves from the pickup location to the dropoff location by using Simultaneous Localization and Mapping (SLAM) to localize itself in the environment
+and Djikstra algorithm to find the some desired optimal path.    
 
 #### Components
 Project is segmented into 3 key components. 
