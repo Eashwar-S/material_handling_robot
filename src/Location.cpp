@@ -122,7 +122,7 @@ bool Location::isNearTarget(const visualization_msgs::Marker &target) {
   float actual_dis_x, actual_dis_y;
   /// threshold represents the mininmum distance to which marker should
   /// change shape from cube to sphere
-  float threshold = 0.8;
+  float threshold = 1;
   actual_dis_x = fabs(target.pose.position.x - odom_x);
   actual_dis_y = fabs(target.pose.position.y - odom_y);
 

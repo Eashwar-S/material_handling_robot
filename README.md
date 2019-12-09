@@ -135,6 +135,13 @@ The default with no arguments will move turtlebot from red station to green stat
 roslaunch material_handling_robot material_handling_robot.launch
 ```
 
+#### Visualizing Locations
+After launching project, follow the steps below to visualize station locations
+1.Click on Rviz  
+2.Click on Add   
+3.Select Markers  
+
+
 ## Personal Information:
 
 We (Eashwar Sathyamurthy and Akwasi A Obeng) both are pursuing Masters in Engineering specializing in Robotics in University of Maryland. We both are first year graduate students. We mainly chose to do this project as it resonated with our interests.
