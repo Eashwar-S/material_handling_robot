@@ -76,8 +76,10 @@ int Location::setMarkerProperties(int color, int id, Position p,
   m.header.frame_id = "/map";
   m.header.stamp = ros::Time::now();
 
-  /// Set the namespace and id for this marker. This serves to create a unique ID
-  /// Any marker sent with the same namespace and id will overwrite the old one
+  /// Set the namespace and id for this marker.
+  /// This serves to create a unique ID
+  /// Any marker sent with the same namespace
+  /// and id will overwrite the old one
   m.ns = "vmarkers";
   m.id = id;
   /// Setting the marker type.
