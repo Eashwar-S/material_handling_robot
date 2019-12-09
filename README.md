@@ -85,7 +85,7 @@ cd ..
 catkin_make
 source devel/setup.bash
 ```
-## How to run tests
+## How to build tests
 ```
 cd catkin_ws
 source devel/setup.bash
@@ -101,14 +101,34 @@ cd catkin_ws
 source devel/setup.bash
 rostest material_handling_robot vmarkers.test 
 ```
-## How to run using launch files
+## How to run program using launch files
+To run the program, the user has to specify the pickup and dropoff station. There are a fixed number of colored stations and 
+the user gets to randomized the pickup and dropoff location.  
+
+Stations colors and their respective numbers.
+Red -> 0
+Green -> 1
+Yellow -> 2
+Blue -> 3
+Pink -> 4
+
 ```
 cd catkin_ws
 source devel/setup.bash
 roslaunch material_handling_robot material_handling_robot.launch pickupLocation:=<number> dropoffLocation:=<number>
 
 ```
-number argument ranges between 0 and 4.
+For example to move from Yellow station to blue station run the following command
+
+```
+roslaunch material_handling_robot material_handling_robot.launch pickupLocation:=2 dropoffLocation:=3
+
+```
+
+The default with no arguments will move turtlebot from red station to green station
+```
+roslaunch material_handling_robot material_handling_robot.launch
+```
 
 ## Personal Information:
 
