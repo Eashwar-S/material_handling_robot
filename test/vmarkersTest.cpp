@@ -155,6 +155,6 @@ TEST(vmarkersTest, testingisNearTargetMethod) {
  */
 TEST(vmarkersTest, testingvisualizeLocationsMethod) {
   Location locate;
-  char *str[] = {"2"};
+  char *str[] = {(char*)"2"};
   EXPECT_EQ(0, locate.visualizeLocations(1, str));
 }
