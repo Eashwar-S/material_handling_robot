@@ -58,6 +58,8 @@ Location::Location() {
 int Location::displayStations() {
   std::vector < Position > vec = stations.getStations();
   int count = 1;
+
+  /// loop through position vector and create a vector of markers
   for (Position p : vec) {
     visualization_msgs::Marker m;
     setMarkerProperties(count, count - 1, p, m);
@@ -69,13 +71,15 @@ int Location::displayStations() {
 
 int Location::setMarkerProperties(int color, int id, Position p,
                                   visualization_msgs::Marker& m) {
-  // Setting the frame ID and timestamp.
+  /// Setting the frame ID and timestamp.
 
   m.header.frame_id = "/map";
   m.header.stamp = ros::Time::now();
 
-  // Set the namespace and id for this marker. This serves to create a unique ID
-  // Any marker sent with the same namespace and id will overwrite the old one
+  /// Set the namespace and id for this marker.
+  /// This serves to create a unique ID
+  /// Any marker sent with the same namespace
+  /// and id will overwrite the old one
   m.ns = "vmarkers";
   m.id = id;
   /// Setting the marker type.
@@ -122,7 +126,7 @@ bool Location::isNearTarget(const visualization_msgs::Marker &target) {
   float actual_dis_x, actual_dis_y;
   /// threshold represents the mininmum distance to which marker should
   /// change shape from cube to sphere
-  float threshold = 0.8;
+  float threshold = 1;
   actual_dis_x = fabs(target.pose.position.x - odom_x);
   actual_dis_y = fabs(target.pose.position.y - odom_y);
 
@@ -148,7 +152,7 @@ int Location::visualizeLocations(int argc, char** argv) {
       if (isNearTarget (stationMarkers[endLocation]))
         displayTargetLocation(stationMarkers[endLocation]);
     }
-    ROS_INFO("I am here");
+    ROS_INFO_STREAM("I am here");
     publishStationLocations();
     ros::spinOnce();
     r.sleep();

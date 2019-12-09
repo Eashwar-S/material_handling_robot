@@ -52,9 +52,13 @@ int main(int argc, char** argv) {
   /// spin action thread by default
   MoveBaseClient ac("move_base", true);
   // Wait 5 sec for move_base action server to come up
-  while (!ac.waitForServer(ros::Duration(5.0))) {
-    ROS_INFO("Waiting for the move_base action server to come up");
-  }
+  while (!ac.waitForServer(ros::Duration(5.0)))
+    ROS_INFO_STREAM("Waiting for the move_base action server to come up");
+
+  if (atoi(argv[1]) < 0 || atoi(argv[1])> 4 ||
+      atoi(argv[2]) < 0 || atoi(argv[2])> 4)
+     ROS_ERROR_STREAM("Not a valid station number");
+
   Pickupdropoff pickdrop;
   move_base_msgs::MoveBaseGoal goal;
   pickdrop.goToPickAndDrop(goal, ac, atoi(argv[1]), atoi(argv[2]), true);

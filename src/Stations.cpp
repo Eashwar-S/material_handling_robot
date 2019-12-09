@@ -41,12 +41,12 @@
 #include "Stations.hpp"
 
 Stations::Stations() {
-  /// Initializing positions to the markers
+  /// Initializing station locations
   Position p1(-2, 3);
   Position p2(0, 3);
-  Position p3(1, 2);
-  Position p4(2, 1);
-  Position p5(2, 3);
+  Position p3(-6, 2);
+  Position p4(-4, -1.5);
+  Position p5(2, -1.5);
 
   stations.push_back(p1);
   stations.push_back(p2);
