@@ -1,0 +1,10 @@
+<launch>
+  <node pkg="material_handling_robot"
+        type="vmarker"
+        name="vmarker" />
+
+  <test pkg="material_handling_robot" 
+        type="vmarkersTest"
+        test-name="vmarkersTest" />
+
+</launch>

@@ -23,45 +23,65 @@
  ******************************************************************************/
 
 /**
- * @file main.cpp
+ * @file Stations.hpp
  *
- * @author Part1: Eashwar Sathyamurthy(Driver)  Akwasi A Obeng(Navigator)
+ * @author Akwasi A Obeng(Driver)  Eashwar Sathyamurthy(Navigator)
  *
- * @brief main file to run all the methods in pickupdropoff node
+ * @brief declaration for Stations class
  *
  * @version 1
  *
  * @date 2019-12-06
  *
+ * This .hpp file has declarations for the class attributes and methods for
+ * simple functionality of positioning the markers in the turtlebot world.
  *
  */
-#include <ros/ros.h>
-#include <move_base_msgs/MoveBaseAction.h>
-#include <actionlib/client/simple_action_client.h>
-#include "Pickupdropoff.hpp"
 
-/// Define a client for to send goal requests to the
-///  move_base server through a SimpleActionClient
-typedef actionlib::SimpleActionClient
-            <move_base_msgs::MoveBaseAction> MoveBaseClient;
+#include <vector>
+#include "Position.hpp"
 
+#ifndef INCLUDE_STATIONS_HPP_
+#define INCLUDE_STATIONS_HPP_
+/**
+ *
+ * @brief declaration of Stations class
+ *
+ */
+class Stations {
+ private:
+  std::vector<Position> stations;
 
-int main(int argc, char** argv) {
-  /// Initializing pickupdropoff node
-  ros::init(argc, argv, "pickupdropoff");
-  /// spin action thread by default
-  MoveBaseClient ac("move_base", true);
-  // Wait 5 sec for move_base action server to come up
-  while (!ac.waitForServer(ros::Duration(5.0)))
-    ROS_INFO_STREAM("Waiting for the move_base action server to come up");
-
-  if (atoi(argv[1]) < 0 || atoi(argv[1])> 4 ||
-      atoi(argv[2]) < 0 || atoi(argv[2])> 4)
-     ROS_ERROR_STREAM("Not a valid station number");
-
-  Pickupdropoff pickdrop;
-  move_base_msgs::MoveBaseGoal goal;
-  pickdrop.goToPickAndDrop(goal, ac, atoi(argv[1]), atoi(argv[2]), true);
-}
-
+ public:
+  /**
+   *
+   * @brief default constructor to initialize the private members
+   *
+   * @param none
+   *
+   * @return none
+   *
+   */
+  Stations();
+  /**
+   *
+   * @brief destructor to destroy the Stations class object
+   *
+   * @param none
+   *
+   * @return none
+   *
+   */
+  ~Stations();
+  /**
+   * @brief Used to give vector of positions
+   *
+   * @param none
+   *
+   * @return vector<Position>& a reference to a vector of positions
+   *
+   */
+  std::vector<Position>& getStations();
+};
+#endif  // INCLUDE_STATIONS_HPP_
 

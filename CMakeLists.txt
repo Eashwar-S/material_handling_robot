@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(material_handling_robot)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
- #add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -17,6 +17,7 @@ find_package(catkin REQUIRED
   move_base_msgs
   actionlib
 )
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -107,8 +108,13 @@ find_package(catkin REQUIRED
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package()
-
+catkin_package(
+  INCLUDE_DIRS include
+)
+include_directories(
+  include
+  ${catkin_INCLUDE_DIRS} 
+)
 ###########
 ## Build ##
 ###########
@@ -198,11 +204,25 @@ catkin_package()
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 include_directories(include ${catkin_INCLUDE_DIRS})
-add_executable(pickupdropoff src/main.cpp src/pickupdropoff.cpp)
+add_executable(pickupdropoff src/main.cpp src/Pickupdropoff.cpp src/Position.cpp src/Stations.cpp)
 target_link_libraries(pickupdropoff ${catkin_LIBRARIES})
 
 
 include_directories(include ${catkin_INCLUDE_DIRS})
-add_executable(vmarker src/main2.cpp src/location.cpp)
+add_executable(vmarker src/main2.cpp src/Location.cpp src/Position.cpp src/Stations.cpp)
 target_link_libraries(vmarker ${catkin_LIBRARIES})
  
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(vmarkersTest test/vmarkers.test test/vmarkersTest.cpp test/main.cpp src/Location.cpp src/Position.cpp src/Stations.cpp)
+  target_link_libraries(vmarkersTest ${catkin_LIBRARIES})
+  include_directories(include ${catkin_INCLUDE_DIRS})
+endif()
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 --coverage")
+  add_rostest_gtest(pickupdropoffTest test/pickupdropoff.test test/pickupdropoffTest.cpp src/Stations.cpp src/Position.cpp src/Pickupdropoff.cpp)
+  target_link_libraries(pickupdropoffTest ${catkin_LIBRARIES})
+  include_directories(include ${catkin_INCLUDE_DIRS})
+endif()

@@ -27,41 +27,23 @@
  *
  * @author Part1: Eashwar Sathyamurthy(Driver)  Akwasi A Obeng(Navigator)
  *
- * @brief main file to run all the methods in pickupdropoff node
+ * @brief run test cases in vmarker node
  *
  * @version 1
  *
  * @date 2019-12-06
  *
+ * This .cpp file is used to run all test cases in vmarker node.
  *
  */
+
+#include <gtest/gtest.h>
 #include <ros/ros.h>
-#include <move_base_msgs/MoveBaseAction.h>
-#include <actionlib/client/simple_action_client.h>
-#include "Pickupdropoff.hpp"
+#include <memory>
+#include "Location.hpp"
 
-/// Define a client for to send goal requests to the
-///  move_base server through a SimpleActionClient
-typedef actionlib::SimpleActionClient
-            <move_base_msgs::MoveBaseAction> MoveBaseClient;
-
-
-int main(int argc, char** argv) {
-  /// Initializing pickupdropoff node
-  ros::init(argc, argv, "pickupdropoff");
-  /// spin action thread by default
-  MoveBaseClient ac("move_base", true);
-  // Wait 5 sec for move_base action server to come up
-  while (!ac.waitForServer(ros::Duration(5.0)))
-    ROS_INFO_STREAM("Waiting for the move_base action server to come up");
-
-  if (atoi(argv[1]) < 0 || atoi(argv[1])> 4 ||
-      atoi(argv[2]) < 0 || atoi(argv[2])> 4)
-     ROS_ERROR_STREAM("Not a valid station number");
-
-  Pickupdropoff pickdrop;
-  move_base_msgs::MoveBaseGoal goal;
-  pickdrop.goToPickAndDrop(goal, ac, atoi(argv[1]), atoi(argv[2]), true);
+int main(int argc, char **argv) {
+  testing::InitGoogleTest(&argc, argv);
+  ros::init(argc, argv, "vmarkersTest");
+  return RUN_ALL_TESTS();
 }
-
-

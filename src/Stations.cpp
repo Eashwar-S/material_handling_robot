@@ -23,45 +23,41 @@
  ******************************************************************************/
 
 /**
- * @file main.cpp
+ * @file Stations.cpp
  *
- * @author Part1: Eashwar Sathyamurthy(Driver)  Akwasi A Obeng(Navigator)
+ * @author Akwasi A Obeng(Driver)  Eashwar Sathyamurthy(Navigator)
  *
- * @brief main file to run all the methods in pickupdropoff node
+ * @brief cpp program for definition and implementation of the methods of
+ *        Stations class
  *
  * @version 1
  *
  * @date 2019-12-06
  *
+ * This program implements the methods of the
+ * Stations class from Stations.hpp header file
  *
  */
-#include <ros/ros.h>
-#include <move_base_msgs/MoveBaseAction.h>
-#include <actionlib/client/simple_action_client.h>
-#include "Pickupdropoff.hpp"
+#include "Stations.hpp"
 
-/// Define a client for to send goal requests to the
-///  move_base server through a SimpleActionClient
-typedef actionlib::SimpleActionClient
-            <move_base_msgs::MoveBaseAction> MoveBaseClient;
+Stations::Stations() {
+  /// Initializing station locations
+  Position p1(-2, 3);
+  Position p2(0, 3);
+  Position p3(-6, 2);
+  Position p4(-4, -1.5);
+  Position p5(2, -1.5);
 
-
-int main(int argc, char** argv) {
-  /// Initializing pickupdropoff node
-  ros::init(argc, argv, "pickupdropoff");
-  /// spin action thread by default
-  MoveBaseClient ac("move_base", true);
-  // Wait 5 sec for move_base action server to come up
-  while (!ac.waitForServer(ros::Duration(5.0)))
-    ROS_INFO_STREAM("Waiting for the move_base action server to come up");
-
-  if (atoi(argv[1]) < 0 || atoi(argv[1])> 4 ||
-      atoi(argv[2]) < 0 || atoi(argv[2])> 4)
-     ROS_ERROR_STREAM("Not a valid station number");
-
-  Pickupdropoff pickdrop;
-  move_base_msgs::MoveBaseGoal goal;
-  pickdrop.goToPickAndDrop(goal, ac, atoi(argv[1]), atoi(argv[2]), true);
+  stations.push_back(p1);
+  stations.push_back(p2);
+  stations.push_back(p3);
+  stations.push_back(p4);
+  stations.push_back(p5);
 }
 
 
+std::vector<Position>&  Stations::getStations() {
+  return stations;
+}
+
+Stations::~Stations() {}
