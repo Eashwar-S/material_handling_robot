@@ -41,7 +41,7 @@
 #include "Stations.hpp"
 
 Stations::Stations() {
-  /// Initializing positions to the markers
+  /// Initializing station locations
   Position p1(-2, 3);
   Position p2(0, 3);
   Position p3(-6, 2);

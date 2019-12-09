@@ -58,6 +58,8 @@ Location::Location() {
 int Location::displayStations() {
   std::vector < Position > vec = stations.getStations();
   int count = 1;
+
+  /// loop through position vector and create a vector of markers
   for (Position p : vec) {
     visualization_msgs::Marker m;
     setMarkerProperties(count, count - 1, p, m);
@@ -69,13 +71,13 @@ int Location::displayStations() {
 
 int Location::setMarkerProperties(int color, int id, Position p,
                                   visualization_msgs::Marker& m) {
-  // Setting the frame ID and timestamp.
+  /// Setting the frame ID and timestamp.
 
   m.header.frame_id = "/map";
   m.header.stamp = ros::Time::now();
 
-  // Set the namespace and id for this marker. This serves to create a unique ID
-  // Any marker sent with the same namespace and id will overwrite the old one
+  /// Set the namespace and id for this marker. This serves to create a unique ID
+  /// Any marker sent with the same namespace and id will overwrite the old one
   m.ns = "vmarkers";
   m.id = id;
   /// Setting the marker type.
