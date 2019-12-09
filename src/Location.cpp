@@ -148,7 +148,7 @@ int Location::visualizeLocations(int argc, char** argv) {
       if (isNearTarget (stationMarkers[endLocation]))
         displayTargetLocation(stationMarkers[endLocation]);
     }
-    ROS_INFO("I am here");
+    ROS_INFO_STREAM("I am here");
     publishStationLocations();
     ros::spinOnce();
     r.sleep();

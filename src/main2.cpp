@@ -44,6 +44,11 @@ int main(int argc, char *argv[]) {
   ros::init(argc, argv, "vmarkers");
   ros::NodeHandle nh;
   Location vmarker;
+
+  if (atoi(argv[1]) < 0 || atoi(argv[1])> 4 ||
+      atoi(argv[2]) < 0 || atoi(argv[2])> 4)
+     ROS_ERROR_STREAM("Not a valid station number");
+
   vmarker.visualizeLocations(argc, argv);
   return 0;
 }
