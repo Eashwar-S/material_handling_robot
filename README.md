@@ -79,6 +79,10 @@ Click on [link](https://drive.google.com/file/d/1qtUF3zVZq3WPwMe-tqsNadlGDdAg_yq
 ### Sprint Planning Notes
 Click on [link](https://docs.google.com/document/d/1Gug4z3o0OprYMuxE-jDm3AfoFI3M0aBzy0Ka1AaFv9c/edit?usp=sharing) to view Sprint Planning Google Doc file
 
+### Powerpoint Slide
+Click on [link](https://docs.google.com/presentation/d/11KiUA9ghvn5jOhlqSudXs_JKCjTtH-adGAJvypEEJmM/edit?usp=sharing) to view Powerpoint Slides
+
+
 ## How to build
 ```
 mkdir -p ~/catkin_ws/src
@@ -136,7 +140,7 @@ roslaunch material_handling_robot material_handling_robot.launch
 ```
 
 #### Visualizing Locations
-After launching project, follow the steps below to visualize station locations
+After launching project, follow the steps below to visualize station locations  
 1.Click on Rviz  
 2.Click on Add   
 3.Select Markers  
