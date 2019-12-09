@@ -105,11 +105,11 @@ rostest material_handling_robot vmarkers.test
 To run the program, the user has to specify the pickup and dropoff station. There are a fixed number of colored stations and 
 the user gets to randomized the pickup and dropoff location.  
 
-Stations colors and their respective numbers.
-Red -> 0
-Green -> 1
-Yellow -> 2
-Blue -> 3
+Stations colors and their respective numbers are listed as follows:  
+Red -> 0,
+Green -> 1,
+Yellow -> 2,
+Blue -> 3,
 Pink -> 4
 
 ```
@@ -118,7 +118,7 @@ source devel/setup.bash
 roslaunch material_handling_robot material_handling_robot.launch pickupLocation:=<number> dropoffLocation:=<number>
 
 ```
-For example to move from Yellow station to blue station run the following command
+For example to move from Yellow station to Blue station run the following command
 
 ```
 roslaunch material_handling_robot material_handling_robot.launch pickupLocation:=2 dropoffLocation:=3
